@@ -10,6 +10,8 @@ import me.ele.shop.sdk.util.CallbackValidationUtil;
 
 import java.io.*;
 import java.net.InetSocketAddress;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Callback {
     private static ObjectMapper mapper;
@@ -58,9 +60,13 @@ public class Callback {
                 code = 500;
                 response = e.getMessage();
             } finally {
-                t.sendResponseHeaders(code, response.length());
+                Map<String, String> responseMap = new HashMap<>();
+                responseMap.put("message", response);
+                String message = mapper.writeValueAsString(responseMap);
+
+                t.sendResponseHeaders(code, message.length());
                 OutputStream os = t.getResponseBody();
-                os.write(response.getBytes());
+                os.write(message.getBytes());
                 os.close();
             }
         }

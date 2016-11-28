@@ -53,6 +53,12 @@
  
 
 ## CHANGELOG:
+
+### [v1.0.1]
+
+    Release Date : 2016-11-29
+
+  - [Bugfix] 回调消息返回值改为{"message":"ok"}
   
 ### [v1.0.0]
 
