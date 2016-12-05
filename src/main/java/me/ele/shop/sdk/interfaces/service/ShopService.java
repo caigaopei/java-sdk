@@ -5,20 +5,40 @@ import me.ele.shop.sdk.anotation.NopService;
 import me.ele.shop.sdk.interfaces.entity.shop.OShop;
 import me.ele.shop.sdk.interfaces.entity.shop.OSimpleShop;
 import me.ele.shop.sdk.interfaces.enumeration.shop.OShopProperty;
+import me.ele.shop.sdk.interfaces.exception.ServiceException;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Map;
 
 /**
- * 店铺服务
+ * eleme.shop 店铺服务
  */
 @NopService(alias = "eleme.shop")
 public interface ShopService {
 
-    OShop getShop(@NotNull int shopId);
+    /**
+     * 查询店铺信息
+     *
+     * @param shopId int 店铺Id|必选|908888
+     * @return OShop
+     */
+    OShop getShop(@NotNull(message = "店铺Id不能为空") int shopId) throws ServiceException;
 
-    OShop updateShop(@NotNull int shopId, Map<OShopProperty, Object> properties);
+    /**
+     * 更新店铺基本信息
+     *
+     * @param shopId     int 店铺Id|必选|908888
+     * @param properties Map<OShopProperty,Object> 店铺属性|必选|{"addressText":"上海市长宁区龙溪路虹桥路1923号","agentFee":3,"closeDescription":"商户关店1"}
+     * @return OShop
+     */
+    OShop updateShop(@NotNull(message = "店铺Id不能为空") int shopId, @NotNull(message = "店铺属性不能为空") Map<OShopProperty, Object> properties) throws ServiceException;
 
-    Map<Integer, OSimpleShop> mgetShopStatus(@NotNull List<Integer> shopIds);
+    /**
+     * 批量获取店铺的状态
+     *
+     * @param shopIds List<Integer> 店铺Id的列表|必选|908888
+     * @return Map<Integer,OSimpleShop>
+     */
+    Map<Integer, OSimpleShop> mgetShopStatus(@NotNull(message = "店铺Id的列表不能为空") List<Integer> shopIds) throws ServiceException;
 }

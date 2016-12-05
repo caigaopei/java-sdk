@@ -8,7 +8,7 @@ public enum OOrderMode {
     /**
      * 未知状态
      */
-    others(-1, "other", " 未知状态"),
+    unknown(-1, "unknown", " 未知状态"),
 
     /**
      * 使用开放平台接单
@@ -46,7 +46,7 @@ public enum OOrderMode {
                 return invalidStatus;
             }
         }
-        return OOrderMode.others;
+        return OOrderMode.unknown;
     }
 
     @Override

@@ -2,21 +2,24 @@ package me.ele.shop.sdk.interfaces.entity.shop;
 
 import lombok.Data;
 
+/**
+ * 店铺状态
+ */
 @Data
 public class OSimpleShop {
 
     /**
-     * 饿了么店铺id
+     * 店铺Id||988887
      */
     private int id;
 
     /**
-     * 是否开店(是为1，否为0)
+     * 是否开店||1
      */
     private int isOpen;
 
     /**
-     * 是否有效(1有效，0无效）
+     * 是否有效||1
      */
     private int isValid;
 }

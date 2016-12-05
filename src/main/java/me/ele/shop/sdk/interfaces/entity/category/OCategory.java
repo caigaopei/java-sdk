@@ -2,25 +2,28 @@ package me.ele.shop.sdk.interfaces.entity.category;
 
 import lombok.Data;
 
+/**
+ * 商品分类
+ */
 @Data
 public class OCategory {
     /**
-     * 饿了么商品分类ID
+     * 商品分类Id||26940000135
      */
     private long id;
 
     /**
-     * 商品分类名称
+     * 商品分类名称||家常菜
      */
     private String name;
 
     /**
-     * 商品分类描述
+     * 商品分类描述||家庭日常的小炒
      */
     private String description;
 
     /**
-     * 是否有效
+     * 是否有效||1
      */
     private int isValid;
 }

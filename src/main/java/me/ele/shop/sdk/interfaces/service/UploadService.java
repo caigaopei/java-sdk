@@ -2,35 +2,40 @@ package me.ele.shop.sdk.interfaces.service;
 
 
 import me.ele.shop.sdk.anotation.NopService;
+import me.ele.shop.sdk.interfaces.exception.ServiceException;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
- * 图片服务
+ * eleme.file 图片服务
  */
 @NopService(alias = "eleme.file")
 public interface UploadService {
-    /**
-     * 上传图片
-     *
-     * @param image 将图片数据base64编码后得到的字符串
-     * @return 图片上传后，得到一个字符串格式的图片标识，根据此标识可以获取图片的访问URL
-     */
-    String uploadImage(@NotNull String image);
 
     /**
-     * 通过远程URL上传图片
+     * 上传图片，返回图片的hash值
      *
-     * @param url 图片地址
-     * @return
+     * @param image String 文件内容base64编码值|必选|（文件流编码）
+     * @return String
+     * @error UNKNOWN_IMAGE_TYPE 未知的图片类型
      */
-    String uploadImageWithRemoteUrl(@NotNull String url);
+    String uploadImage(@NotNull(message = "图片内容不能为空") @Size(min = 10, message = "图片内容过短") String image) throws ServiceException;
 
     /**
-     * 获取上传文件的访问URL
+     * 通过远程URL上传图片，返回图片的hash值
      *
-     * @param hash 调用上传图片接口得到的返回值
-     * @return
+     * @param url String 远程Url地址|必选|http://fuss.alpha.elenet.me/6/10/12b2acefd5bec93e85699628801cfjpeg.jpeg
+     * @return String
+     * @error NETWORK_EXCEPTION 网络异常
      */
-    String getUploadedUrl(@NotNull String hash);
+    String uploadImageWithRemoteUrl(@NotNull(message = "url不能为空") @Size(min = 10, message = "url长度过短") String url) throws ServiceException;
+
+    /**
+     * 获取上传文件的访问URL，返回文件的Url地址
+     *
+     * @param hash String 图片hash值|必选|3077080f760e7bf0fc985e23dd3e36e2png
+     * @return String
+     */
+    String getUploadedUrl(@NotNull(message = "hash不能为空") @Size(min = 10, message = "hash长度过短") String hash) throws ServiceException;
 }
