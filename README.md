@@ -2,9 +2,10 @@
 
 ## API接入指南
   1. 检查Java版本 java >= 1.8
-  2. 修改resources/config.properties中的appKey和secret配置，将开发者中心后台申请的应用沙箱的appKey和secret填入配置文件
-  3. 使用sdk提供的功能进行开发调试
-  4. 上线前将config.properties中sandbox值设为false以及将appKey和secret设为正式配置
+  2. 添加Java的编译选项 -parameters
+  3. 修改resources/config.properties中的appKey和secret配置，将开发者中心后台申请的应用沙箱的appKey和secret填入配置文件
+  4. 使用sdk提供的功能进行开发调试
+  5. 上线前将config.properties中sandbox值设为false以及将appKey和secret设为正式配置
  
 ## 消息回调接入指南
   sdk内置了一个简单的callback http server（demo/callback.java）,可供消息回调的调试。
