@@ -21,12 +21,12 @@ public class OGoodsAddition {
     /**
      * 配菜单价||3.0
      */
-    private Double price = 0.0;
+    private double price = 0.0;
 
     /**
      * 配菜数量||2
      */
-    private Integer quantity = 0;
+    private int quantity = 0;
 
     /**
      * 是否显示数量||true

@@ -25,7 +25,7 @@ public class OShop {
     /**
      * 店铺默认配送费||3
      */
-    private Short agentFee;
+    private double agentFee;
 
     /**
      * 店铺营业状态||busyLevel
@@ -50,14 +50,13 @@ public class OShop {
     /**
      * 起送价||20
      */
-    private Short deliverAmount;
+    private double deliverAmount;
 
     /**
      * 配送区域详情||额外4元配送费
      */
     private String deliverDescription;
 
-    // TODO: 16/12/2 配送范围详解
     /**
      * 配送范围||详情请咨询饿了么
      */
@@ -256,5 +255,5 @@ public class OShop {
      *
      * @desc 对于该店铺的每张订单，如果有店铺订单打包费，则采用该值；如果没有，则根据订单中的菜品来决定打包费。
      */
-    private Double packingFee;
+    private double packingFee;
 }
