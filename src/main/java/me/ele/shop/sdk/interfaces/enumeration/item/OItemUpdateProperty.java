@@ -1,9 +1,9 @@
 package me.ele.shop.sdk.interfaces.enumeration.item;
 
 /**
- * 商品参数
+ * 更新商品属性
  */
-public enum OItemProperty {
+public enum OItemUpdateProperty {
 
     /**
      * 商品名称
@@ -40,9 +40,10 @@ public enum OItemProperty {
      */
     categoryId("商品分类");
 
+
     private String value;
 
-    private OItemProperty(String value) {
+    private OItemUpdateProperty(String value) {
         this.value = value;
     }
 }
