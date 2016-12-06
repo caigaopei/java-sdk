@@ -55,6 +55,13 @@
 
 ## CHANGELOG:
 
+### [v1.0.2]
+
+    Release Date : 2016-12-6
+
+  - [Feature] sdk新增批量清空货，补满货，上架，下架的接口
+  - [Bugfix] 修改店铺结构体
+
 ### [v1.0.1]
 
     Release Date : 2016-11-29
