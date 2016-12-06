@@ -6,32 +6,27 @@ package me.ele.shop.sdk.interfaces.enumeration.item;
 public enum OItemCreateProperty {
 
     /**
-     * 商品名称
+     * 商品名称|必选|白切鸡
      */
     name("商品名称"),
 
     /**
-     * 商品单价
-     */
-    price("商品单价"),
-
-    /**
-     * 商品描述
+     * 商品描述|可选|香脆可口，外焦里嫩
      */
     description("商品描述"),
 
     /**
-     * 图片imageHash
+     * 图片imageHash|可选|http://pic.ele.me/1929345.png
      */
     imageHash("图片imageHash"),
 
     /**
-     * 标签属性集合
+     * 标签属性集合|可选|
      */
     labels("标签属性集合"),
 
     /**
-     * 规格
+     * 规格|必选|
      */
     specs("规格");
 

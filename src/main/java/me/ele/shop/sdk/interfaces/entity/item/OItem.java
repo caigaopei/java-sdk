@@ -36,6 +36,11 @@ public class OItem {
     private int recentPopularity;
 
     /**
+     * 商品分类Id||69093224
+     */
+    private long categoryId;
+
+    /**
      * 店铺Id||987777
      */
     private int shopId;
