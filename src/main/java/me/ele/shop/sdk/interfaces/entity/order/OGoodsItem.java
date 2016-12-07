@@ -2,9 +2,6 @@ package me.ele.shop.sdk.interfaces.entity.order;
 
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 篮子商品
  */
@@ -40,10 +37,5 @@ public class OGoodsItem {
      * 总价||18
      */
     private double total = 0.0;
-
-    /**
-     * 商品配菜的列表||
-     */
-    private List<OGoodsAddition> additions = new ArrayList<>();
 
 }
