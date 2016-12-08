@@ -56,5 +56,5 @@ public interface ProductCategoryService {
      *
      * @param categoryId long 商品分类Id|必选|26940000135
      */
-    void removeCategory(@NotNull(message = "商品分类Id不能为空") long categoryId);
+    void removeCategory(@NotNull(message = "商品分类Id不能为空") long categoryId) throws ServiceException;
 }
