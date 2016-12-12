@@ -3,6 +3,7 @@ package me.ele.shop.sdk.interfaces.service;
 
 import me.ele.shop.sdk.anotation.NopService;
 
+import javax.sql.rowset.serial.SerialException;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -18,5 +19,5 @@ public interface MessageService {
      * @param appId int 应用ID|必选|73987374
      * @return List<String>
      */
-    List<String> getNonReachedMessages(@NotNull(message = "应用ID不能为空") int appId);
+    List<String> getNonReachedMessages(@NotNull(message = "应用ID不能为空") int appId) throws SerialException;
 }
