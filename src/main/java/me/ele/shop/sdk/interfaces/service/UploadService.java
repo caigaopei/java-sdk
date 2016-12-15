@@ -25,7 +25,7 @@ public interface UploadService {
     /**
      * 通过远程URL上传图片，返回图片的hash值
      *
-     * @param url String 远程Url地址|必选|http://fuss.alpha.elenet.me/6/10/12b2acefd5bec93e85699628801cfjpeg.jpeg
+     * @param url String 远程Url地址|必选|"http://pic.ele.me/123455.jpg"
      * @return String
      * @error NETWORK_EXCEPTION 网络异常
      */
@@ -34,8 +34,8 @@ public interface UploadService {
     /**
      * 获取上传文件的访问URL，返回文件的Url地址
      *
-     * @param hash String 图片hash值|必选|3077080f760e7bf0fc985e23dd3e36e2png
-     * @return String
+     * @param hash String 图片hash值|必选|"3077080f760e7bf0fc985e23dd3e36e2png"
+     * @return String 文件的Url地址
      */
     String getUploadedUrl(@NotNull(message = "hash不能为空") @Size(min = 10, message = "hash长度过短") String hash) throws ServiceException;
 }

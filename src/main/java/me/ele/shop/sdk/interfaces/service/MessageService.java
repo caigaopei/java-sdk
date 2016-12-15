@@ -1,9 +1,10 @@
 package me.ele.shop.sdk.interfaces.service;
 
 
-import me.ele.shop.sdk.anotation.NopService;
 
-import javax.sql.rowset.serial.SerialException;
+import me.ele.shop.sdk.anotation.NopService;
+import me.ele.shop.sdk.interfaces.exception.ServiceException;
+
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -14,10 +15,11 @@ import java.util.List;
 public interface MessageService {
 
     /**
-     * 获取推动未到达的消息
+     * 获取未到达的推送消息
      *
      * @param appId int 应用ID|必选|73987374
-     * @return List<String>
+     * @return List<String> 消息列表
+     * @desc 推送成功的消息系统会给以标记成功，该接口用于获取未标记成功的消息，每次返回最多50条。返回的消息在接口调用后会标记为已经推送。
      */
-    List<String> getNonReachedMessages(@NotNull(message = "应用ID不能为空") int appId) throws SerialException;
+    List<String> getNonReachedMessages(@NotNull(message = "应用ID不能为空") int appId) throws ServiceException;
 }

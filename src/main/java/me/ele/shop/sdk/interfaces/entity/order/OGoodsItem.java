@@ -14,7 +14,7 @@ public class OGoodsItem {
     private long id;
 
     /**
-     * 商品名称||奶茶
+     * 商品名称||"奶茶"
      */
     private String name = "";
 
@@ -24,7 +24,7 @@ public class OGoodsItem {
     private long categoryId = 0;
 
     /**
-     * 商品单价||9
+     * 商品单价||9.0
      */
     private double price = 0.0;
 
@@ -34,7 +34,7 @@ public class OGoodsItem {
     private int quantity = 0;
 
     /**
-     * 总价||18
+     * 总价||18.0
      */
     private double total = 0.0;
 

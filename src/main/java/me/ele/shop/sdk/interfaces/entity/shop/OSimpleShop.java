@@ -3,7 +3,7 @@ package me.ele.shop.sdk.interfaces.entity.shop;
 import lombok.Data;
 
 /**
- * 店铺状态
+ * 店铺简要
  */
 @Data
 public class OSimpleShop {

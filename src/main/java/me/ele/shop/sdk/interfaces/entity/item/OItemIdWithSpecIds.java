@@ -16,7 +16,7 @@ public class OItemIdWithSpecIds {
     private long itemId;
 
     /**
-     * 商品规格Id的列表|必选|[72970000221,,72970000222,72970000225]
+     * 商品规格Id的列表|必选|"[72970000221,72970000222,72970000225]"
      */
     private List<Long> itemSpecIds;
 

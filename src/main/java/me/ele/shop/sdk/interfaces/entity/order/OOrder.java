@@ -1,8 +1,6 @@
 package me.ele.shop.sdk.interfaces.entity.order;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
-import me.ele.shop.sdk.deserializer.LocalDateTimeDeserializer;
 import me.ele.shop.sdk.interfaces.enumeration.order.OOrderRefundStatus;
 import me.ele.shop.sdk.interfaces.enumeration.order.OOrderStatus;
 
@@ -17,22 +15,20 @@ import java.util.List;
 public class OOrder {
 
     /**
-     * 顾客送餐地址||近铁城市广场
+     * 顾客送餐地址||"近铁城市广场"
      */
     private String address;
 
     /**
-     * 下单时间||2016-11-30T12:15:53
+     * 下单时间||"2016-11-30T12:15:53"
      */
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime createdAt;
 
     /**
-     * 订单生效时间||2016-11-30T12:15:53
+     * 订单生效时间||"2016-11-30T12:15:53"
      *
      * @desc 即支付时间
      */
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime activeAt;
 
     /**
@@ -41,22 +37,22 @@ public class OOrder {
     private double deliverFee;
 
     /**
-     * 预计送达时间||2016-11-30T13:15:53
+     * 预计送达时间||"2016-11-30T13:15:53"
      */
     private LocalDateTime deliverTime;
 
     /**
-     * 订单备注||不要香菜
+     * 订单备注||"不要香菜"
      */
     private String description;
 
     /**
-     * 订单详细类目的列表||
+     * 订单详细类目的列表||"[{"items":[{"categoryId":1123123,"id":2341123,"name":"奶茶","price":10.0,"quantity":30,"total":300.0}],"name":"一个分组","type":"discount"}]"
      */
     private List<OGoodsGroup> groups = new ArrayList<>();
 
     /**
-     * 发票抬头||拉扎斯网络科技(上海)有限公司
+     * 发票抬头||"拉扎斯网络科技(上海)有限公司"
      */
     private String invoice;
 
@@ -71,12 +67,12 @@ public class OOrder {
     private boolean isOnlinePaid;
 
     /**
-     * 订单Id||100027455049038461
+     * 订单Id||"100027455049038461"
      */
     private String id;
 
     /**
-     * 顾客联系电话||13507701342
+     * 顾客联系电话||["13507701342"]
      */
     private List<String> phoneList = new ArrayList<>();
 
@@ -86,7 +82,7 @@ public class OOrder {
     private int shopId;
 
     /**
-     * 店铺名称||实验餐厅
+     * 店铺名称||"实验餐厅"
      */
     private String shopName;
 
@@ -96,12 +92,12 @@ public class OOrder {
     private int daySn;
 
     /**
-     * 订单状态||settled
+     * 订单状态||"settled"
      */
     private OOrderStatus status;
 
     /**
-     * 退单状态||noRefund
+     * 退单状态||"noRefund"
      */
     private OOrderRefundStatus refundStatus;
 
@@ -125,22 +121,22 @@ public class OOrder {
     private double originalPrice;
 
     /**
-     * 订单收货人}}张三
+     * 订单收货人||"张三"
      */
     private String consignee;
 
     /**
-     * 订单收货地址经纬度||121.83317,31.514559
+     * 订单收货地址经纬度||"121.83317,31.514559"
      */
     private String deliveryGeo;
 
     /**
-     * 顾客送餐详情地址||近铁城市广场（普陀区金沙江路1518弄)
+     * 顾客送餐详情地址||"近铁城市广场（普陀区金沙江路1518弄)"
      */
     private String deliveryPoiAddress;
 
     /**
-     * 是否需要发票||1
+     * 是否需要发票||true
      */
     private boolean invoiced;
 
@@ -186,6 +182,10 @@ public class OOrder {
 
     /**
      * 降级标识||false
+     *
+     * @desc true为已降级，false为未降级。
+     * 平台为尽可能促成交易，会在一部分字段未生成的时候（如活动补贴），将订单生成。
+     * 如果需要完整的订单的订单信息，需要事后在降级标记为false时再进行读取。
      */
     private boolean downgraded;
 }

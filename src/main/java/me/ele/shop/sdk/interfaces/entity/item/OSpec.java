@@ -14,7 +14,7 @@ public class OSpec {
     private long specId;
 
     /**
-     * 名称||大份
+     * 名称||"大份"
      */
     private String name;
 
