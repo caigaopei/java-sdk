@@ -25,7 +25,7 @@ public interface ProductItemService {
      * @param categoryId long 商品分类Id|必选|26940000135
      * @return Map<Long,OItem> 商品列表
      */
-    Map<Long, OItem> getItemsByCategoryId(@NotNull(message = "商品分类Id不能为空") long categoryId) throws ServiceException;
+    Map<Long, OItem> getItemsByCategoryId(@NotNull(message = "商品分类Id不能为空") Long categoryId) throws ServiceException;
 
     /**
      * 查询商品详情
