@@ -8,6 +8,10 @@ public class BusinessException extends ServiceException {
         super(formatCode(e.getCode()), e.getMessage());
     }
 
+    public BusinessException(String message) {
+        super("BIZ_EXCEPTION", message);
+    }
+
     public BusinessException(String code, String message) {
         super(formatCode(code), message);
     }

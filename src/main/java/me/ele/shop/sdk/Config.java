@@ -51,7 +51,7 @@ public class Config {
 
     public static String getAccessTokenUrl() {
         if (accessTokenRequestUrl == null) {
-            return sandbox ? "https://open-api.shop.ele.me/token" : "https://open-api.shop.ele.me/token";
+            return sandbox ? "https://open-api-sandbox.shop.ele.me/token" : "https://open-api.shop.ele.me/token";
         }
 
         return accessTokenRequestUrl;
