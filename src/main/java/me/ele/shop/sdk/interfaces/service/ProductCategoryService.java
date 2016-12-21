@@ -20,7 +20,7 @@ public interface ProductCategoryService {
      * @param shopId int 店铺Id|必选|987777
      * @return List<OCategory> 商品分类列表
      */
-    List<OCategory> getShopCategories(@NotNull(message = "店铺Id不能为空") int shopId) throws ServiceException;
+    List<OCategory> getShopCategories(@NotNull(message = "店铺Id不能为空") Integer shopId) throws ServiceException;
 
 
     /**
@@ -29,7 +29,7 @@ public interface ProductCategoryService {
      * @param categoryId long 商品分类Id|必选|26940000135
      * @return OCategory 商品分类
      */
-    OCategory getCategory(@NotNull(message = "商品分类Id不能为空") long categoryId) throws ServiceException;
+    OCategory getCategory(@NotNull(message = "商品分类Id不能为空") Long categoryId) throws ServiceException;
 
     /**
      * 添加商品分类
@@ -39,7 +39,7 @@ public interface ProductCategoryService {
      * @param description String 商品分类描述|必选|"一道美味的炒饭"
      * @return OCategory 商品分类
      */
-    OCategory createCategory(@NotNull(message = "店铺Id不能为空") int shopId, @NotNull(message = "商品分类名称不能为空") String name, @NotNull(message = "商品分类描述不能为空") String description) throws ServiceException;
+    OCategory createCategory(@NotNull(message = "店铺Id不能为空") Integer shopId, @NotNull(message = "商品分类名称不能为空") String name, @NotNull(message = "商品分类描述不能为空") String description) throws ServiceException;
 
     /**
      * 更新商品分类
@@ -49,12 +49,12 @@ public interface ProductCategoryService {
      * @param description String 商品分类描述|必选|"一道美味的炒饭"
      * @return OCategory 商品分类
      */
-    OCategory updateCategory(@NotNull(message = "商品分类Id不能为空") long categoryId, @NotNull(message = "商品分类名称不能为空") String name, @NotNull(message = "商品分类描述不能为空") String description) throws ServiceException;
+    OCategory updateCategory(@NotNull(message = "商品分类Id不能为空") Long categoryId, @NotNull(message = "商品分类名称不能为空") String name, @NotNull(message = "商品分类描述不能为空") String description) throws ServiceException;
 
     /**
      * 删除商品分类
      *
      * @param categoryId long 商品分类Id|必选|26940000135
      */
-    void removeCategory(@NotNull(message = "商品分类Id不能为空") long categoryId) throws ServiceException;
+    void removeCategory(@NotNull(message = "商品分类Id不能为空") Long categoryId) throws ServiceException;
 }

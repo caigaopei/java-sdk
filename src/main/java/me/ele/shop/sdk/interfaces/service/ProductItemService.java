@@ -33,7 +33,7 @@ public interface ProductItemService {
      * @param itemId long 商品分类Id|必选|27980000010
      * @return OItem 商品
      */
-    OItem getItem(@NotNull(message = "商品分类Id不能为空") long itemId) throws ServiceException;
+    OItem getItem(@NotNull(message = "商品分类Id不能为空") Long itemId) throws ServiceException;
 
 
     /**
@@ -51,7 +51,7 @@ public interface ProductItemService {
      * @param properties Map<OItemCreateProperty,Object> 商品属性|必选|"{"description":"美味的食物","imageHash":"3077080f760e7bf0fc985e23dd3e36e2","labels":"{\"isFeatured\":0,\"isGum\":0,\"isNew\":1,\"isSpicy\":1}","name":"牛排","specs":"[{\"specId\":0,\"name\":\"大份\",\"price\":19.9,\"stock\":0,\"maxStock\":100,\"packingFee\":1.0,\"onShelf\":1},{\"specId\":0,\"name\":\"中分\",\"price\":19.9,\"stock\":0,\"maxStock\":100,\"packingFee\":1.0,\"onShelf\":1}]"}"
      * @return OItem 商品
      */
-    OItem createItem(@NotNull(message = "商品分类Id不能为空") long categoryId, @NotNull(message = "商品属性不能为空") Map<OItemCreateProperty, Object> properties) throws ServiceException;
+    OItem createItem(@NotNull(message = "商品分类Id不能为空") Long categoryId, @NotNull(message = "商品属性不能为空") Map<OItemCreateProperty, Object> properties) throws ServiceException;
 
     /**
      * 批量添加商品
@@ -61,7 +61,7 @@ public interface ProductItemService {
      *                   ]"
      * @return Map<Long,OItem> 商品列表
      */
-    Map<Long, OItem> batchCreateItems(@NotNull(message = "商品分类Id不能为空") long categoryId, @NotNull(message = "商品属性的列表不能为空") List<Map<OItemCreateProperty, Object>> items) throws ServiceException;
+    Map<Long, OItem> batchCreateItems(@NotNull(message = "商品分类Id不能为空") Long categoryId, @NotNull(message = "商品属性的列表不能为空") List<Map<OItemCreateProperty, Object>> items) throws ServiceException;
 
     /**
      * 更新商品
@@ -71,7 +71,7 @@ public interface ProductItemService {
      * @param properties Map<OItemUpdateProperty,Object> 商品属性|必选|"{"description":"美味的食物","imageHash":"3077080f760e7bf0fc985e23dd3e36e2","labels":"{\"isFeatured\":0,\"isGum\":0,\"isNew\":1,\"isSpicy\":1}","name":"牛排","specs":"[{\"specId\":0,\"name\":\"大份\",\"price\":19.9,\"stock\":0,\"maxStock\":100,\"packingFee\":1.0,\"onShelf\":1},{\"specId\":0,\"name\":\"中分\",\"price\":19.9,\"stock\":0,\"maxStock\":100,\"packingFee\":1.0,\"onShelf\":1}]"}"
      * @return OItem 商品列表
      */
-    OItem updateItem(@NotNull(message = "商品Id不能为空") long itemId, @NotNull(message = "商品分类Id不能为空") long categoryId, @NotNull(message = "商品属性不能为空") Map<OItemUpdateProperty, Object> properties) throws ServiceException;
+    OItem updateItem(@NotNull(message = "商品Id不能为空") Long itemId, @NotNull(message = "商品分类Id不能为空") Long categoryId, @NotNull(message = "商品属性不能为空") Map<OItemUpdateProperty, Object> properties) throws ServiceException;
 
     /**
      * 批量置满库存
@@ -111,7 +111,7 @@ public interface ProductItemService {
      * @param itemId long 商品Id|必选|27980000010
      * @return OItem 商品
      */
-    OItem removeItem(@NotNull(message = "商品Id不能为空") long itemId) throws ServiceException;
+    OItem removeItem(@NotNull(message = "商品Id不能为空") Long itemId) throws ServiceException;
 
     /**
      * 批量删除商品
