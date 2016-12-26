@@ -55,6 +55,14 @@
 
 ## CHANGELOG:
 
+
+### [v1.0.4]
+
+    Release Date : 2016-12-21
+
+  - [Bugfix] 修复订单解析失败的问题
+  - [Feature] 新增获取推送未到达的消息实体的接口
+
 ### [v1.0.3]
 
     Release Date : 2016-12-21

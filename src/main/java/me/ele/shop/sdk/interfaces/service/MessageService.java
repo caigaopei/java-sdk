@@ -16,7 +16,7 @@ import java.util.List;
 public interface MessageService {
 
     /**
-     * 获取未到达的推送消息
+     * 获取未到达的推送消息实体
      *
      * @param appId int 应用ID|必选|73987374
      * @return List<OMessage> 消息列表
