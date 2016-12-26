@@ -1,6 +1,8 @@
 package me.ele.shop.sdk.interfaces.entity.order;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
+import me.ele.shop.sdk.deserializer.LocalDateTimeDeserializer;
 import me.ele.shop.sdk.interfaces.enumeration.order.OOrderRefundStatus;
 import me.ele.shop.sdk.interfaces.enumeration.order.OOrderStatus;
 
@@ -22,6 +24,7 @@ public class OOrder {
     /**
      * 下单时间||"2016-11-30T12:15:53"
      */
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime createdAt;
 
     /**
@@ -29,6 +32,7 @@ public class OOrder {
      *
      * @desc 即支付时间
      */
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime activeAt;
 
     /**
@@ -39,6 +43,7 @@ public class OOrder {
     /**
      * 预计送达时间||"2016-11-30T13:15:53"
      */
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime deliverTime;
 
     /**
