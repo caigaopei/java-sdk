@@ -55,6 +55,11 @@
 
 ## CHANGELOG:
 
+### [v1.0.5]
+
+    Release Date : 2016-12-28
+
+  - [Improvement] 篮子商品中新增字段skuId
 
 ### [v1.0.4]
 

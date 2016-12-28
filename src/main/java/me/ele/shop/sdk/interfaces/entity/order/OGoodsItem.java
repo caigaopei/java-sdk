@@ -14,6 +14,11 @@ public class OGoodsItem {
     private long id;
 
     /**
+     * 规格Id||2543
+     */
+    private Long skuId;
+
+    /**
      * 商品名称||"奶茶"
      */
     private String name = "";
