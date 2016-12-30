@@ -12,7 +12,7 @@
   
    1. 执行 **gradle clean build -x test** 命令，生成build/libs/java-sdk.jar文件
    2. 执行 **java -jar build/libs/java-sdk.jar** ，此时会在本地启动一个http server，默认端口8888
-   3. 执行 **curl http://localhost:8899/callback** ，返回ok表示服务启动成功
+   3. 执行 **curl http://localhost:8888/callback** ，返回 {"message":"ok"} 表示服务启动成功
    4. 将java-sdk.jar部署到你的服务器上，在开发者后台填入回调请求的地址，开放平台会向此地址POST消息
  
 ## API调用代码示例
