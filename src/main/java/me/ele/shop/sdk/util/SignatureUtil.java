@@ -17,7 +17,6 @@ public class SignatureUtil {
         parameters.forEach((key, value) -> sorted.put(key, value));
         sorted.put("app_key", appKey);
         sorted.put("timestamp", timestamp);
-
         StringBuffer string = new StringBuffer();
         sorted.forEach((key, value) -> {
             try {
