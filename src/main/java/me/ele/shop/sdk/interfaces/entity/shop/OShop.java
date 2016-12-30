@@ -183,7 +183,7 @@ public class OShop {
      *
      * @desc 0 未营业，1 正在营业
      */
-    private boolean isOpen;
+    private int open;
 
 
     /**

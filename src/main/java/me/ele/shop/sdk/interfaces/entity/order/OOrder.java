@@ -64,12 +64,12 @@ public class OOrder {
     /**
      * 是否预订单||true
      */
-    private boolean isBook;
+    private boolean book;
 
     /**
      * 是否在线支付||false
      */
-    private boolean isOnlinePaid;
+    private boolean onlinePaid;
 
     /**
      * 订单Id||"100027455049038461"
