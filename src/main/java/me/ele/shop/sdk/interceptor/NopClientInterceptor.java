@@ -66,7 +66,7 @@ class NopClientInterceptor implements MethodInterceptor {
         // 本地校验token时效
         Date date = new Date();
         if (date.getTime() > ClientContext.getToken().getLastTime()) {
-            throw new UnauthorizedException();
+            throw new UnauthorizedException("token已过期，请重新申请token");
         }
 
         Map<String, Object> parameters = getParamMap(method, arguments);
