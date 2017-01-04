@@ -57,7 +57,7 @@
 
 ### [v1.0.7]
 
-    Release Date : 2016-1-4
+    Release Date : 2017-01-04
 
   - [Improvement] 对token的时效进行了本地校验
 
