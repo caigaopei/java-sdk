@@ -11,6 +11,7 @@ import me.ele.shop.sdk.anotation.NopService;
 import me.ele.shop.sdk.interfaces.exception.BusinessException;
 import me.ele.shop.sdk.interfaces.exception.ServerErrorException;
 import me.ele.shop.sdk.interfaces.exception.ServiceException;
+import me.ele.shop.sdk.interfaces.exception.UnauthorizedException;
 import me.ele.shop.sdk.protocol.ErrorPayload;
 import me.ele.shop.sdk.protocol.ResponsePayload;
 import me.ele.shop.sdk.reflect.VInvoke;
@@ -24,10 +25,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 class NopClientInterceptor implements MethodInterceptor {
     private static HttpClientUtil httpClientUtil = new HttpClientUtil();
@@ -64,7 +62,13 @@ class NopClientInterceptor implements MethodInterceptor {
         String appKey = Config.getAppKey();
         String secret = Config.getSecret();
         String action = getAction(method);
-        String token = ClientContext.getToken().getAccessToken();
+        String token = ClientContext.getToken().getOAuthToken().getAccessToken();
+        // 本地校验token时效
+        Date date = new Date();
+        if (date.getTime() > ClientContext.getToken().getLastTime()) {
+            throw new UnauthorizedException();
+        }
+
         Map<String, Object> parameters = getParamMap(method, arguments);
 
         Map<String, Object> requestPayload = new HashMap<>();

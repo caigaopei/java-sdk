@@ -32,7 +32,9 @@ public class ClientCredentials {
                 put("grant_type", "client_credentials");
             }});
 
-            return objectMapper.readValue(response, Token.class);
+            OAuthToken oAuthToken = objectMapper.readValue(response, OAuthToken.class);
+            Token token = new Token(oAuthToken);
+            return token;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

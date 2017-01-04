@@ -1,16 +1,18 @@
 package me.ele.shop.sdk.protocol;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+import java.util.Date;
+
 public class Token {
-    @JsonProperty("access_token")
-    private String accessToken;
+    @Getter
+    private OAuthToken oAuthToken;
+    @Getter
+    long lastTime;
 
-    @JsonProperty("token_type")
-    private String tokenType;
-
-    @JsonProperty("expires_in")
-    private long expires;
+    public Token(OAuthToken oAuthToken) {
+        this.oAuthToken = oAuthToken;
+        Date now = new Date();
+        lastTime = now.getTime() + oAuthToken.getExpires();
+    }
 }
