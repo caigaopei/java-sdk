@@ -65,7 +65,6 @@
 
     Release Date : 2016-12-28
 
-  - [Improvement] OOrder新增字段railwayAddress
   - [Bugfix] OOrder结构体boolean类型的参数命名去除了is前缀
 
 ### [v1.0.5]
