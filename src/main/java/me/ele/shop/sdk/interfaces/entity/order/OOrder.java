@@ -193,6 +193,4 @@ public class OOrder {
      * 如果需要完整的订单的订单信息，需要事后在降级标记为false时再进行读取。
      */
     private boolean downgraded;
-    
-    private String railwayAddress; //高铁订餐专用，不写入文档
 }
