@@ -55,6 +55,11 @@
 
 ## CHANGELOG:
 
+### [v1.0.7]
+
+    Release Date : 2016-1-4
+
+  - [Improvement] 对token的时效进行了本地校验
 
 ### [v1.0.6]
 
