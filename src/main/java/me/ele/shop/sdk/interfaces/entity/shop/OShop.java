@@ -243,7 +243,7 @@ public class OShop {
     /**
      * 订单模式||"busyLevelFree"
      */
-    private OOrderMode oOrderMode;
+    private OOrderMode orderMode;
 
     /**
      * 是否支持在线支付||1
@@ -273,7 +273,7 @@ public class OShop {
     /**
      * 店铺手机站url||"http://r.ele.me/b3bdj6t87h"
      */
-    private String mUrl;
+    private String mobileUrl;
 
     /**
      * 营业时间的列表||"[["08:00:00-23:00:00"],["01:00:00-03:00:00"]]"
