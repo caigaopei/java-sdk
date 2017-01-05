@@ -55,6 +55,12 @@
 
 ## CHANGELOG:
 
+### [v1.0.8]
+
+    Release Date : 2017-01-05
+
+  - [Bugfix] 为了解决序列号冲突，OShop结构体中oOrderMode重命名为orderMode,mUrl重命名为mobileUrl
+
 ### [v1.0.7]
 
     Release Date : 2017-01-04
