@@ -3,17 +3,17 @@ package sdk.oauth;
 import java.util.Date;
 
 public class Token {
-    private OAuthToken oAuthToken;
+    private AccessToken accessToken;
     long lastTime;
 
-    public Token(OAuthToken oAuthToken) {
-        this.oAuthToken = oAuthToken;
+    public Token(AccessToken accessToken) {
+        this.accessToken = accessToken;
         Date now = new Date();
-        lastTime = now.getTime() + oAuthToken.getExpires();
+        lastTime = now.getTime() + accessToken.getExpires();
     }
 
-    public OAuthToken getoAuthToken() {
-        return oAuthToken;
+    public AccessToken getAccessToken() {
+        return accessToken;
     }
 
     public long getLastTime() {

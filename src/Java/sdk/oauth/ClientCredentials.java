@@ -36,8 +36,8 @@ public class ClientCredentials {
 
             logger.info(response);
 
-            OAuthToken oAuthToken = objectMapper.readValue(response, OAuthToken.class);
-            Token token = new Token(oAuthToken);
+            AccessToken accessToken = objectMapper.readValue(response, AccessToken.class);
+            Token token = new Token(accessToken);
             return token;
         } catch (IOException e) {
             throw new RuntimeException(e);

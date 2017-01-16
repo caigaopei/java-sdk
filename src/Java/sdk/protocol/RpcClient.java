@@ -34,7 +34,7 @@ public class RpcClient {
         final long timestamp = System.currentTimeMillis() / 1000;
         final String appKey = Config.getAppKey();
         String secret = Config.getSecret();
-        String accessToken = token.getoAuthToken().getAccessToken();
+        String accessToken = token.getAccessToken().getAccessToken();
         // 本地校验token时效
         Date date = new Date();
         if (date.getTime() > token.getLastTime()) {
