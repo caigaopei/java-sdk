@@ -10,8 +10,8 @@ public class Config {
     private static boolean sandbox;
     private static String appKey;
     private static String secret;
-    private static String accessTokenRequestUrl;
     private static String apiServerRequestUrl;
+    private static String tokenRequestBaseUrl;
 
     static {
         Properties properties = new Properties();
@@ -24,8 +24,8 @@ public class Config {
             sandbox = properties.get("sandbox").equals("true") ? true : false;
             appKey = (String) properties.get("appKey");
             secret = (String) properties.get("secret");
-            accessTokenRequestUrl = (String) properties.get("accessTokenRequestUrl");
             apiServerRequestUrl = (String) properties.get("apiServerRequestUrl");
+            tokenRequestBaseUrl = (String) properties.get("tokenRequestBaseUrl");
 
             Map<String, String> envs = System.getenv();
             //System.out.println(envs);
@@ -50,12 +50,16 @@ public class Config {
     }
 
     public static String getAccessTokenUrl() {
-        if (accessTokenRequestUrl == null) {
-            return sandbox ? "https://open-api-sandbox.shop.ele.me/token" : "https://open-api.shop.ele.me/token";
-        }
-
-        return accessTokenRequestUrl;
+        return getTokenRequestBaseUrl() + "/token";
     }
+
+    public static String getTokenRequestBaseUrl() {
+        if (tokenRequestBaseUrl == null) {
+            return sandbox ? "https://open-api-sandbox.shop.ele.me" : "https://open-api.shop.ele.me";
+        }
+        return tokenRequestBaseUrl;
+    }
+
 
     public static String getAPIServerUrl() {
         if (apiServerRequestUrl == null) {
@@ -63,4 +67,6 @@ public class Config {
         }
         return apiServerRequestUrl;
     }
+
+
 }
