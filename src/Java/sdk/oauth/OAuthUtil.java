@@ -9,7 +9,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 public class OAuthUtil {
 
@@ -17,11 +16,10 @@ public class OAuthUtil {
 
     HttpClientUtil httpClientUtil = new HttpClientUtil();
 
-    public String getAuthUrl(int appId, String redirectUri) {
+    public String getAuthUrl(int appId, String state, String redirectUri) {
         String url = Config.getTokenRequestBaseUrl() + "/authorize";
         String responseType = "code";
         String clientId = String.valueOf(appId);
-        String state = UUID.randomUUID().toString();
         String callback;
         try {
             callback = URLEncoder.encode(redirectUri, "utf-8");
