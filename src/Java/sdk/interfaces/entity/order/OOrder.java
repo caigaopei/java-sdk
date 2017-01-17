@@ -192,8 +192,6 @@ public class OOrder {
      */
     private boolean downgraded;
 
-    private String railwayAddress;//高铁专用字段，不计入文档
-
     public String getAddress() {
         return address;
     }
@@ -456,13 +454,5 @@ public class OOrder {
 
     public void setDowngraded(boolean downgraded) {
         this.downgraded = downgraded;
-    }
-
-    public String getRailwayAddress() {
-        return railwayAddress;
-    }
-
-    public void setRailwayAddress(String railwayAddress) {
-        this.railwayAddress = railwayAddress;
     }
 }

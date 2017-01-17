@@ -3,7 +3,6 @@ package sdk.config;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Map;
 import java.util.Properties;
 
 public class Config {
@@ -26,9 +25,6 @@ public class Config {
             secret = (String) properties.get("secret");
             apiServerRequestUrl = (String) properties.get("apiServerRequestUrl");
             tokenRequestBaseUrl = (String) properties.get("tokenRequestBaseUrl");
-
-            Map<String, String> envs = System.getenv();
-            //System.out.println(envs);
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
