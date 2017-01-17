@@ -57,13 +57,13 @@ public class RpcClient {
         requestPayload.put("signature", signature);
 
         try {
-            logger.info(objectMapper.writeValueAsString(requestPayload));
+            logger.info("request: " + objectMapper.writeValueAsString(requestPayload));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
         ResponsePayload responsePayload = doRequest(requestPayload);
         try {
-            logger.info(objectMapper.writeValueAsString(responsePayload));
+            logger.info("response: " + objectMapper.writeValueAsString(responsePayload));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

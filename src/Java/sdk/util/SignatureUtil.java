@@ -34,7 +34,7 @@ public class SignatureUtil {
 
         String splice = String.format("%s%s%s%s", action, token, string, secret);
 
-        logger.info(splice);
+        logger.info("splice: " + splice);
 
         String calculatedSignature = md5(splice);
         return calculatedSignature.toUpperCase();
