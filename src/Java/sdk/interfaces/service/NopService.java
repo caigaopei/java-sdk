@@ -36,6 +36,8 @@ class NopService {
         String methodName = Thread.currentThread().getStackTrace()[2].getMethodName();
         Method method = getMethod(methodName);
         Service annotation = (Service) service.getAnnotation(Service.class);
+        if (annotation == null)
+            throw new RuntimeException("服务未找到Service注解");
         String action = String.format("%s.%s", annotation.value(), methodName);
 
         return rpcClient.call(action, parameters, token, method.getGenericReturnType());
