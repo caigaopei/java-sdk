@@ -40,6 +40,7 @@
     Release Date : 2017-01-17
 
   - [Feature] java版本降低至1.6，去除了原有的反射和动态代理
+  - [Feature] 改变了SDK的使用方法
   - [Feature] 以maven替换原有的gradle
   - [Improvement] 项目不再依赖lombok和gradle
 
