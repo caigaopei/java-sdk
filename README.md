@@ -23,7 +23,7 @@
  - 第三步 实例化一个资源服务并注入token，例如店铺服务
 
 ```java
-    ShopService shopService = injector.getInstance(token);
+    ShopService shopService = new ShopService(token);
 ```
  
  - 第四步 调用接口，获取资源数据
