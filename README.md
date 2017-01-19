@@ -35,6 +35,13 @@
 
 ## CHANGELOG:
 
+
+### [v2.0.1]
+
+    Release Date : 2017-01-19
+
+  - [Feature] 新增了UserService
+
 ### [v2.0.0]
 
     Release Date : 2017-01-17

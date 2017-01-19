@@ -16,7 +16,7 @@ public class OAuthUtil {
 
     HttpClientUtil httpClientUtil = new HttpClientUtil();
 
-    public String getAuthUrl(int appId, String state, String redirectUri) {
+    public String getAuthUrl(int appId, String state, String redirectUri, String scope) {
         String url = Config.getTokenRequestBaseUrl() + "/authorize";
         String responseType = "code";
         String clientId = String.valueOf(appId);
@@ -26,7 +26,7 @@ public class OAuthUtil {
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
-        return String.format("%s?response_type=%s&client_id=%s&state=%s&redirect_uri=%s", url, responseType, clientId, state, callback);
+        return String.format("%s?response_type=%s&client_id=%s&state=%s&redirect_uri=%s&scope=%s", url, responseType, clientId, state, callback, scope);
     }
 
     public String getTokenByCode(final String code, String redirectUri) {
