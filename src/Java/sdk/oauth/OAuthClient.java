@@ -29,24 +29,6 @@ public class OAuthClient {
         objectMapper.configure(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL, true);
     }
 
-    public Token getAccessToken() {
-        try {
-            Map<String, String> body = new HashMap<String, String>();
-            body.put("grant_type", "client_credentials");
-
-            String response = httpClientUtil.post(Config.getAccessTokenUrl(), getHeaders(), body);
-            logger.info("getAccessToken: " + response);
-
-            AccessToken accessToken = objectMapper.readValue(response, AccessToken.class);
-            Token token = new Token(accessToken);
-            return token;
-        } catch (IOException e) {
-            logger.error(e);
-            throw new RuntimeException(e);
-        }
-    }
-
-
     public String getAuthUrl(String state, String scope) {
         String url = Config.getAuthorizeUrl();
         String responseType = "code";
@@ -60,26 +42,26 @@ public class OAuthClient {
         return String.format("%s?response_type=%s&client_id=%s&state=%s&redirect_uri=%s&scope=%s", url, responseType, clientId, state, callback, scope);
     }
 
-    public String getTokenByCode(final String code) {
-        try {
-            final String callback = Config.getCallbackUrl();
-            Map<String, String> body = new HashMap<String, String>();
-            body.put("grant_type", "authorization_code");
-            body.put("code", code);
-            body.put("redirect_uri", callback);
-            body.put("client_id", Config.getAppKey());
+    public Token getTokenByCode(final String code) {
+        final String callback = Config.getCallbackUrl();
+        Map<String, String> body = new HashMap<String, String>();
+        body.put("grant_type", "authorization_code");
+        body.put("code", code);
+        body.put("redirect_uri", callback);
+        body.put("client_id", Config.getAppKey());
 
+        try {
             String response = httpClientUtil.post(Config.getAccessTokenUrl(), getHeaders(), body);
 
             logger.info("getTokenByCode: " + response);
-            return response;
+            return objectMapper.readValue(response, Token.class);
         } catch (IOException e) {
             logger.error(e);
             throw new RuntimeException(e);
         }
     }
 
-    public String getTokenByRefreshToken(String refreshToken, String scope) {
+    public Token getTokenByRefreshToken(String refreshToken, String scope) {
         Map<String, String> body = new HashMap<String, String>();
         body.put("grant_type", "refresh_token");
         body.put("refresh_token", refreshToken);
@@ -87,12 +69,12 @@ public class OAuthClient {
         String response;
         try {
             response = httpClientUtil.post(Config.getAccessTokenUrl(), getHeaders(), body);
+            logger.info("getTokenByRefreshToken: " + response);
+            return objectMapper.readValue(response, Token.class);
         } catch (IOException e) {
             logger.error(e);
             throw new RuntimeException(e);
         }
-        logger.info("getTokenByRefreshToken: " + response);
-        return response;
     }
 
     private static String getBasic() {

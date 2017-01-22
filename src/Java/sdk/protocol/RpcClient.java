@@ -12,7 +12,6 @@ import sdk.util.SignatureUtil;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -34,12 +33,7 @@ public class RpcClient {
         final long timestamp = System.currentTimeMillis() / 1000;
         final String appKey = Config.getAppKey();
         String secret = Config.getSecret();
-        String accessToken = token.getAccessToken().getAccessToken();
-        // 本地校验token时效
-        Date date = new Date();
-        if (date.getTime() > token.getLastTime()) {
-            throw new UnauthorizedException("token已过期，请重新申请token");
-        }
+        String accessToken = token.getAccessToken();
 
         Map<String, Object> requestPayload = new HashMap();
         requestPayload.put("nop", "1.0.0");

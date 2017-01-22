@@ -1,22 +1,45 @@
 package sdk.oauth;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Token {
-    private AccessToken accessToken;
-    long lastTime;
+    @JsonProperty("access_token")
+    private String accessToken;
 
-    public Token(AccessToken accessToken) {
-        this.accessToken = accessToken;
-        Date now = new Date();
-        lastTime = now.getTime() + accessToken.getExpires();
-    }
+    @JsonProperty("token_type")
+    private String tokenType;
 
-    public AccessToken getAccessToken() {
+    @JsonProperty("expires_in")
+    private long expires;
+
+    @JsonProperty("refresh_token")
+    private String refreshToken;
+
+    public String getAccessToken() {
         return accessToken;
     }
 
-    public long getLastTime() {
-        return lastTime;
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
+
+    public String getTokenType() {
+        return tokenType;
+    }
+
+    public void setTokenType(String tokenType) {
+        this.tokenType = tokenType;
+    }
+
+    public long getExpires() {
+        return expires;
+    }
+
+    public void setExpires(long expires) {
+        this.expires = expires;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
     }
 }
