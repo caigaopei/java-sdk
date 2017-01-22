@@ -9,8 +9,8 @@ public class Config {
     private static boolean sandbox;
     private static String appKey;
     private static String secret;
-    private static String apiServerRequestUrl;
-    private static String tokenRequestBaseUrl;
+    private static String serverUrl;
+    private static String callbackUrl;
 
     static {
         Properties properties = new Properties();
@@ -23,8 +23,8 @@ public class Config {
             sandbox = properties.get("sandbox").equals("true") ? true : false;
             appKey = (String) properties.get("appKey");
             secret = (String) properties.get("secret");
-            apiServerRequestUrl = (String) properties.get("apiServerRequestUrl");
-            tokenRequestBaseUrl = (String) properties.get("tokenRequestBaseUrl");
+            serverUrl = (String) properties.get("serverUrl");
+            callbackUrl = (String) properties.get("callbackUrl");
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -32,7 +32,11 @@ public class Config {
             throw new RuntimeException(e);
         }
 
-        if (appKey == null || secret == null) {
+        if (callbackUrl == null || callbackUrl.equals("")) {
+            throw new RuntimeException("required callbackUrl in config.properties.");
+        }
+
+        if (appKey == null || secret == null || callbackUrl == null) {
             throw new RuntimeException("fix config.properties first.");
         }
     }
@@ -45,24 +49,27 @@ public class Config {
         return secret.trim();
     }
 
-    public static String getAccessTokenUrl() {
-        return getTokenRequestBaseUrl() + "/token";
+    public static String getCallbackUrl() {
+        return callbackUrl.trim();
     }
 
-    public static String getTokenRequestBaseUrl() {
-        if (tokenRequestBaseUrl == null) {
+    public static String getServerUrl() {
+        if (serverUrl == null) {
             return sandbox ? "https://open-api-sandbox.shop.ele.me" : "https://open-api.shop.ele.me";
         }
-        return tokenRequestBaseUrl;
+        return serverUrl;
     }
 
+    public static String getAccessTokenUrl() {
+        return getServerUrl() + "/token";
+    }
 
     public static String getAPIServerUrl() {
-        if (apiServerRequestUrl == null) {
-            return sandbox ? "https://open-api-sandbox.shop.ele.me/api/v1/" : "https://open-api.shop.ele.me/api/v1/";
-        }
-        return apiServerRequestUrl;
+        return getServerUrl() + "/api/v1/";
     }
 
+    public static String getAuthorizeUrl() {
+        return getServerUrl() + "/authorize";
+    }
 
 }
