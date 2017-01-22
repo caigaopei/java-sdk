@@ -49,12 +49,13 @@ public class Callback {
                     body += line;
                 }
 
+                if (!CallbackValidationUtil.isValidMessage(body)) {
+                    throw new Exception("invalid post data : " + body);
+                }
+
                 OMessage message = null;
                 message = mapper.readValue(body, OMessage.class);
 
-                if (!CallbackValidationUtil.isValidMessage(message)) {
-                    throw new Exception("invalid post data : " + body);
-                }
             } catch (Exception e) {
                 e.printStackTrace();
                 code = 500;

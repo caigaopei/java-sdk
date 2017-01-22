@@ -14,7 +14,7 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Credentials {
+public class OAuthClient {
 
     HttpClientUtil httpClientUtil = new HttpClientUtil();
 
@@ -67,6 +67,7 @@ public class Credentials {
             body.put("grant_type", "authorization_code");
             body.put("code", code);
             body.put("redirect_uri", callback);
+            body.put("client_id", Config.getAppKey());
 
             String response = httpClientUtil.post(Config.getAccessTokenUrl(), getHeaders(), body);
 
@@ -78,10 +79,11 @@ public class Credentials {
         }
     }
 
-    public String getTokenByRefreshToken(String refreshToken) {
+    public String getTokenByRefreshToken(String refreshToken, String scope) {
         Map<String, String> body = new HashMap<String, String>();
         body.put("grant_type", "refresh_token");
         body.put("refresh_token", refreshToken);
+        body.put("scope", scope);
         String response;
         try {
             response = httpClientUtil.post(Config.getAccessTokenUrl(), getHeaders(), body);
