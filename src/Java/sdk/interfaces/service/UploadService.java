@@ -7,7 +7,7 @@ import sdk.oauth.Token;
 import java.util.HashMap;
 import java.util.Map;
 
-@Service("eleme.message")
+@Service("eleme.file")
 public class UploadService extends NopService {
 
     public UploadService(Token token) {
