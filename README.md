@@ -2,39 +2,58 @@
 
 ## API接入指南
   1. 检查Java版本 java >= 1.6
-  2. 修改resources/config.properties中的appKey和secret配置，将开发者中心后台申请的应用沙箱的appKey和secret填入配置文件
+  2. 修改resources/config.properties中的appKey和secret以及callback_ur配置，将开发者中心后台申请的应用沙箱的appKey和secret填入配置文件，，填写callback_url
   3. 使用sdk提供的功能进行开发调试
-  4. 上线前将config.properties中sandbox值设为false以及将appKey和secret设为正式配置
+  4. 上线前将config.properties中sandbox值设为false以及将appKey和secret以及callback_url设为正式配置
 
 ## API调用代码示例
  
- - 第一步 创建ClientCredentials对象
+  - 第一步 创建OAuthClient对象
 
 ```java
-     ClientCredentials clientCredentials = new ClientCredentials();
+    OAuthClient oAuthClient = new OAuthClient();
+```
+
+  - 第二步 获取生成授权url
+
+```java
+    String authUrl = oAuthClient.getAuthUrl(state, scope);
+```
+
+  - 第三步 在授权url中同意授权后，会跳转到CALLBACK_URL的页面，在通过链接上的参数，获取授权码code
+
+  - 第四步 通过code获取Token对象，要注意的是，此token在有效期内可重复使用，请将其全局保存，不要每次接口调用前申请一次Token
+
+```java
+    Token token = oAuthClient.getTokenByCode(code);
+```
+
+  - 第六步 实例化一个资源服务并注入token，例如店铺服务
+
+```java
+    ShopService shopService = new ShopService(token);
 ```
  
- - 第二步 使用oauth2.0客户端授权模式获取Token信息，需要注意的是，此token在有效期内可重复使用，请将其全局保存，不要每次接口调用前申请一次Token
+  - 第七步 调用接口，获取资源数据
 
 ```java
-    Token token = clientCredentials.getAccessToken();
+    OShop shop = shopService.getShop(12345);
 ```
 
- - 第三步 实例化一个资源服务并注入token，例如店铺服务
-
-```java
-    ShopService shopService = injector.getInstance(token);
-```
- 
- - 第四步 调用接口，获取资源数据
+  - 第八步 如果token过期，通过refreshToken换取新的token
 
 ```java
-     OShop shop = shopService.getShop(12345);
+    Token freshToken = oAuthClient.getTokenByRefreshToken(token.getRefreshToken(), scope);
 ```
- 
 
 ## CHANGELOG:
 
+### [v2.1.0]
+
+    Release Date : 2017-01-23
+
+  - [Feature] 更新了授权模式为企业应用授权，个人应用授权的方法不在支持，对应的工具类由ClientCredentials更换为OAuthClient
+  - [Bugfix] OUser中的userId的类型由long改为String
 
 ### [v2.0.1]
 
