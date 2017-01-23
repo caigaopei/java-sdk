@@ -11,13 +11,22 @@ public class Main {
 
     public static void main(String[] args) throws ServiceException, JsonProcessingException {
         OAuthClient oAuthClient = new OAuthClient();
-        String authUrl = oAuthClient.getAuthUrl("your state", "all");
+        // your state
+        String state = "";
+        String scope = "all";
 
-        // your code...
+        String authUrl = oAuthClient.getAuthUrl(state, scope);
 
-        String code = "your code";
+        // get code at authUrl
+        String code = "";
+
+        // get token and save
         Token token = oAuthClient.getTokenByCode(code);
-        OrderService orderService = new OrderService(token);
+
+        // refresh token
+        Token freshToken = oAuthClient.getTokenByRefreshToken(token.getRefreshToken(), scope);
+
+        OrderService orderService = new OrderService(freshToken);
         OOrder oOrder = orderService.getOrder("101926455156368216");
     }
 }
