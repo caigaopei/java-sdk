@@ -50,10 +50,11 @@
 
 ### [v2.1.0]
 
-    Release Date : 2017-01-23
+    Release Date : 2017-01-24
 
   - [Feature] 更新了授权模式为企业应用授权，个人应用授权的方法不在支持，对应的工具类由ClientCredentials更换为OAuthClient
   - [Bugfix] OUser中的userId的类型由long改为String
+  - [Bugfix] 修复了UploadService无法正常使用的问题
 
 ### [v2.0.1]
 
