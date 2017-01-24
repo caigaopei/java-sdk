@@ -74,12 +74,6 @@
     OShop shop = shopService.getShop(12345);
 ```
 
-  - 第五步 如果token过期，通过refreshToken换取新的token
-
-```java
-    Token freshToken = oAuthClient.getTokenByRefreshToken(token.getRefreshToken(), scope);
-```
-
 ## CHANGELOG:
 
 ### [v2.1.1]

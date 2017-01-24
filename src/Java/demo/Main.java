@@ -8,8 +8,11 @@ import sdk.oauth.OAuthClient;
 import sdk.oauth.Token;
 
 public class Main {
-
     public static void main(String[] args) throws ServiceException, JsonProcessingException {
+
+    }
+
+    public static void enterprise() throws ServiceException {
         OAuthClient oAuthClient = new OAuthClient();
 
         // init data
@@ -29,5 +32,15 @@ public class Main {
 
         // refresh token when token expired
         Token freshToken = oAuthClient.getTokenByRefreshToken(token.getRefreshToken(), scope);
+    }
+
+    public static void clientCredentials() throws ServiceException {
+        OAuthClient oAuthClient = new OAuthClient();
+        // get token and save
+        Token token = oAuthClient.getTokenInClientCredentials();
+
+        // call service
+        OrderService orderService = new OrderService(token);
+        OOrder oOrder = orderService.getOrder("101926455156368216");
     }
 }
