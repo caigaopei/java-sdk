@@ -140,7 +140,7 @@
 
     Release Date : 2016-12-21
 
-  - [Bugfix] 修复Excpetion引起的的null异常
+  - [Bugfix] 修复Exception引起的的null异常
   - [Bugfix] 修复沙箱环境获取token的地址
   - [Bugfix] 修复了参数为空时的错误提示
 
