@@ -7,7 +7,9 @@
   4. 上线前将config.properties中sandbox值设为false以及将appKey和secret以及callback_url设为正式配置
 
 ## API调用代码示例
- 
+
+### 企业应用
+
   - 第一步 创建OAuthClient对象
 
 ```java
@@ -41,6 +43,38 @@
 ```
 
   - 第八步 如果token过期，通过refreshToken换取新的token
+
+```java
+    Token freshToken = oAuthClient.getTokenByRefreshToken(token.getRefreshToken(), scope);
+```
+
+### 个人应用
+
+  - 第一步 创建OAuthClient对象
+
+```java
+    OAuthClient oAuthClient = new OAuthClient();
+```
+
+  - 第二步 获取Token对象，要注意的是，此token在有效期内可重复使用，请将其全局保存，不要每次接口调用前申请一次Token
+
+```java
+    Token token = oAuthClient.getTokenInClientCredentials();
+```
+
+  - 第三步 实例化一个资源服务并注入token，例如店铺服务
+
+```java
+    ShopService shopService = new ShopService(token);
+```
+
+  - 第四步 调用接口，获取资源数据
+
+```java
+    OShop shop = shopService.getShop(12345);
+```
+
+  - 第五步 如果token过期，通过refreshToken换取新的token
 
 ```java
     Token freshToken = oAuthClient.getTokenByRefreshToken(token.getRefreshToken(), scope);

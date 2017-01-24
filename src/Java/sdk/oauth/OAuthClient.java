@@ -42,6 +42,20 @@ public class OAuthClient {
         return String.format("%s?response_type=%s&client_id=%s&state=%s&redirect_uri=%s&scope=%s", url, responseType, clientId, state, callback, scope);
     }
 
+    public Token getTokenInClientCredentials() {
+        Map<String, String> body = new HashMap<String, String>();
+        body.put("grant_type", "client_credentials");
+
+        try {
+            String response = httpClientUtil.post(Config.getAccessTokenUrl(), getHeaders(), body);
+            logger.info("getTokenInClientCredentials: " + response);
+            return objectMapper.readValue(response, Token.class);
+        } catch (IOException e) {
+            logger.error(e);
+            throw new RuntimeException(e);
+        }
+    }
+
     public Token getTokenByCode(final String code) {
         final String callback = Config.getCallbackUrl();
         Map<String, String> body = new HashMap<String, String>();
@@ -52,7 +66,6 @@ public class OAuthClient {
 
         try {
             String response = httpClientUtil.post(Config.getAccessTokenUrl(), getHeaders(), body);
-
             logger.info("getTokenByCode: " + response);
             return objectMapper.readValue(response, Token.class);
         } catch (IOException e) {
@@ -80,6 +93,7 @@ public class OAuthClient {
     private static String getBasic() {
         return "Basic " + new BASE64Encoder().encode((String.format("%s:%s", Config.getAppKey(), Config.getSecret()).getBytes()));
     }
+
 
     static HashMap<String, String> getHeaders() {
         return new HashMap<String, String>() {{
