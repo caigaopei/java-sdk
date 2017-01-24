@@ -82,6 +82,12 @@
 
 ## CHANGELOG:
 
+### [v2.1.1]
+
+    Release Date : 2017-01-24
+
+  - [Feature] 重新支持个人应用授权，在OAuthClient中添加getTokenInClientCredentials方法
+
 ### [v2.1.0]
 
     Release Date : 2017-01-24
