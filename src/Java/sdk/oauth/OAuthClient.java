@@ -20,22 +20,47 @@ public class OAuthClient {
 
     Logger logger = Logger.getLogger(this.getClass());
 
+    private static ObjectMapper objectMapper = new ObjectMapper();
+
+    private String authorizeUrl;
+
+    private String appKey;
+
+    private String secret;
+
     private String callbackUrl;
 
-    private static ObjectMapper objectMapper = new ObjectMapper();
+    private String accessTokenUrl;
 
     static {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         objectMapper.configure(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL, true);
     }
 
+    public OAuthClient() {
+        authorizeUrl = Config.getAuthorizeUrl();
+        appKey = Config.getAppKey();
+        secret = Config.getSecret();
+        callbackUrl = Config.getCallbackUrl();
+        accessTokenUrl = Config.getAccessTokenUrl();
+    }
+
+    public OAuthClient(String serverUrl, String appKey, String secret, String callbackUrl) {
+        this.accessTokenUrl = serverUrl + "/token";
+        this.authorizeUrl = serverUrl + "/authorize";
+        this.appKey = appKey;
+        this.secret = secret;
+        this.callbackUrl = callbackUrl;
+    }
+
+
     public String getAuthUrl(String state, String scope) {
-        String url = Config.getAuthorizeUrl();
+        String url = authorizeUrl;
         String responseType = "code";
-        String clientId = Config.getAppKey();
+        String clientId = appKey;
         String callback;
         try {
-            callback = URLEncoder.encode(Config.getCallbackUrl(), "utf-8");
+            callback = URLEncoder.encode(callbackUrl, "utf-8");
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
@@ -47,7 +72,7 @@ public class OAuthClient {
         body.put("grant_type", "client_credentials");
 
         try {
-            String response = httpClientUtil.post(Config.getAccessTokenUrl(), getHeaders(), body);
+            String response = httpClientUtil.post(accessTokenUrl, getHeaders(), body);
             logger.info("getTokenInClientCredentials: " + response);
             return objectMapper.readValue(response, Token.class);
         } catch (IOException e) {
@@ -57,15 +82,15 @@ public class OAuthClient {
     }
 
     public Token getTokenByCode(final String code) {
-        final String callback = Config.getCallbackUrl();
+        final String callback = callbackUrl;
         Map<String, String> body = new HashMap<String, String>();
         body.put("grant_type", "authorization_code");
         body.put("code", code);
         body.put("redirect_uri", callback);
-        body.put("client_id", Config.getAppKey());
+        body.put("client_id", appKey);
 
         try {
-            String response = httpClientUtil.post(Config.getAccessTokenUrl(), getHeaders(), body);
+            String response = httpClientUtil.post(accessTokenUrl, getHeaders(), body);
             logger.info("getTokenByCode: " + response);
             return objectMapper.readValue(response, Token.class);
         } catch (IOException e) {
@@ -81,7 +106,7 @@ public class OAuthClient {
         body.put("scope", scope);
         String response;
         try {
-            response = httpClientUtil.post(Config.getAccessTokenUrl(), getHeaders(), body);
+            response = httpClientUtil.post(accessTokenUrl, getHeaders(), body);
             logger.info("getTokenByRefreshToken: " + response);
             return objectMapper.readValue(response, Token.class);
         } catch (IOException e) {
@@ -90,12 +115,12 @@ public class OAuthClient {
         }
     }
 
-    private static String getBasic() {
-        return "Basic " + new BASE64Encoder().encode((String.format("%s:%s", Config.getAppKey(), Config.getSecret()).getBytes()));
+    private String getBasic() {
+        return "Basic " + new BASE64Encoder().encode((String.format("%s:%s", appKey, secret).getBytes()));
     }
 
 
-    static HashMap<String, String> getHeaders() {
+    private HashMap<String, String> getHeaders() {
         return new HashMap<String, String>() {{
             put(HttpHeaders.CONTENT_TYPE, "Content-Type: application/x-www-form-urlencoded; charset=utf-8");
             put(HttpHeaders.AUTHORIZATION, getBasic());
