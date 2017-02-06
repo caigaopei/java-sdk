@@ -126,11 +126,11 @@ public enum OShopProperty {
     noAgentFeeTotal("满xx元免配送费"),
 
     /**
-     * int 店铺是否有效（上线、下线）|可选|1
+     * int 是否营业|可选|1
      *
-     * @desc 0为无效，1为有效
+     * @desc 1表示营业，0表示不营业
      */
-    isValid("店铺是否有效（上线、下线），0为无效，1为有效"),
+    isOpen("是否营业：1表示营业，0表示不营业"),
 
     /**
      * double 订单打包费|可选|2.0
