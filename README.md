@@ -76,7 +76,7 @@
 
 ## CHANGELOG:
 
-### [v2.1.1]
+### [v2.1.2]
 
     Release Date : 2017-02-07
 
