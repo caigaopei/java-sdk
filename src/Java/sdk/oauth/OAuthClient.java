@@ -71,9 +71,11 @@ public class OAuthClient {
         Map<String, String> body = new HashMap<String, String>();
         body.put("grant_type", "client_credentials");
 
+        logger.info(String.format("getTokenInClientCredentials request: url=%s , headers=%s , body=%s", accessTokenUrl, getHeaders(), body));
+
         try {
             String response = httpClientUtil.post(accessTokenUrl, getHeaders(), body);
-            logger.info("getTokenInClientCredentials: " + response);
+            logger.info("getTokenInClientCredentials response: " + response);
             return objectMapper.readValue(response, Token.class);
         } catch (IOException e) {
             logger.error(e);
@@ -89,9 +91,11 @@ public class OAuthClient {
         body.put("redirect_uri", callback);
         body.put("client_id", appKey);
 
+        logger.info(String.format("getTokenByCode request: url=%s , headers=%s , body=%s", accessTokenUrl, getHeaders(), body));
+
         try {
             String response = httpClientUtil.post(accessTokenUrl, getHeaders(), body);
-            logger.info("getTokenByCode: " + response);
+            logger.info("getTokenByCode response: " + response);
             return objectMapper.readValue(response, Token.class);
         } catch (IOException e) {
             logger.error(e);
@@ -104,10 +108,12 @@ public class OAuthClient {
         body.put("grant_type", "refresh_token");
         body.put("refresh_token", refreshToken);
         body.put("scope", scope);
-        String response;
+
+        logger.info(String.format("getTokenByRefreshToken request: url=%s , headers=%s , body=%s", accessTokenUrl, getHeaders(), body));
+
         try {
-            response = httpClientUtil.post(accessTokenUrl, getHeaders(), body);
-            logger.info("getTokenByRefreshToken: " + response);
+            String response = httpClientUtil.post(accessTokenUrl, getHeaders(), body);
+            logger.info("getTokenByRefreshToken response:" + response);
             return objectMapper.readValue(response, Token.class);
         } catch (IOException e) {
             logger.error(e);

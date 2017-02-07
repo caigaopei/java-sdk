@@ -78,6 +78,13 @@
 
 ### [v2.1.1]
 
+    Release Date : 2017-02-07
+
+  - [Feature] ShopService中的UpdateShop方法，可更新的参数由isValid更变为isOpen
+  - [Feature] 优化了OauthClient类的日志打印
+
+### [v2.1.1]
+
     Release Date : 2017-01-24
 
   - [Feature] 重新支持个人应用授权，在OAuthClient中添加getTokenInClientCredentials方法
