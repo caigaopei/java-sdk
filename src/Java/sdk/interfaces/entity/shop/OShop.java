@@ -13,7 +13,7 @@ public class OShop {
     /**
      * 店铺Id||968514
      */
-    private int id;
+    private long id;
 
     /**
      * 店铺地址||"上海市长宁区龙溪路虹桥路1923号"
@@ -300,11 +300,11 @@ public class OShop {
      */
     private String openId;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

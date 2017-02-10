@@ -71,10 +71,17 @@
   - 第四步 调用接口，获取资源数据
 
 ```java
-    OShop shop = shopService.getShop(12345);
+    OShop shop = shopService.getShop(12345l);
 ```
 
 ## CHANGELOG:
+
+### [v2.1.3]
+
+    Release Date : 2017-02-10
+
+  - [Feature] OUser中增加授权的店铺列表OAuthorizedShop
+  - [Feature] 所有接口的店铺id的类型由int更变为long
 
 ### [v2.1.2]
 

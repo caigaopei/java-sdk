@@ -5,7 +5,7 @@ public class OMessage {
     private int type;
     private int appId;
     private String message;
-    private int shopId;
+    private long shopId;
     private long timestamp;
     private String signature;
     private int userId;
@@ -42,11 +42,11 @@ public class OMessage {
         this.message = message;
     }
 
-    public int getShopId() {
+    public long getShopId() {
         return shopId;
     }
 
-    public void setShopId(int shopId) {
+    public void setShopId(long shopId) {
         this.shopId = shopId;
     }
 

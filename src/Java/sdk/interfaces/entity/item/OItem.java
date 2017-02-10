@@ -42,7 +42,7 @@ public class OItem {
     /**
      * 店铺Id||987777
      */
-    private int shopId;
+    private long shopId;
 
     /**
      * 店铺名称||"烤鸡大王"
@@ -112,11 +112,11 @@ public class OItem {
         this.categoryId = categoryId;
     }
 
-    public int getShopId() {
+    public long getShopId() {
         return shopId;
     }
 
-    public void setShopId(int shopId) {
+    public void setShopId(long shopId) {
         this.shopId = shopId;
     }
 

@@ -18,20 +18,20 @@ public class ShopService extends NopService {
         super(token, ShopService.class);
     }
 
-    public OShop getShop(Integer shopId) throws ServiceException {
+    public OShop getShop(Long shopId) throws ServiceException {
         Map<String, Object> params = new HashMap();
         params.put("shopId", shopId);
         return call(params);
     }
 
-    public OShop updateShop(Integer shopId, Map<OShopProperty, Object> properties) throws ServiceException {
+    public OShop updateShop(Long shopId, Map<OShopProperty, Object> properties) throws ServiceException {
         Map<String, Object> params = new HashMap();
         params.put("shopId", shopId);
         params.put("properties", properties);
         return call(params);
     }
 
-    public Map<Integer, OSimpleShop> mgetShopStatus(List<Integer> shopIds) throws ServiceException {
+    public Map<Long, OSimpleShop> mgetShopStatus(List<Long> shopIds) throws ServiceException {
         Map<String, Object> params = new HashMap();
         params.put("shopIds", shopIds);
         return call(params);

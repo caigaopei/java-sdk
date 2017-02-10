@@ -15,7 +15,7 @@ public class ProductCategoryService extends NopService {
         super(token, ProductCategoryService.class);
     }
 
-    public List<OCategory> getShopCategories(Integer shopId) throws ServiceException {
+    public List<OCategory> getShopCategories(Long shopId) throws ServiceException {
         Map<String, Object> params = new HashMap();
         params.put("shopId", shopId);
         return call(params);
@@ -27,7 +27,7 @@ public class ProductCategoryService extends NopService {
         return call(params);
     }
 
-    public OCategory createCategory(Integer shopId, String name, String description) throws ServiceException {
+    public OCategory createCategory(Long shopId, String name, String description) throws ServiceException {
         Map<String, Object> params = new HashMap();
         params.put("shopId", shopId);
         params.put("name", name);

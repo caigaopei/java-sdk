@@ -82,7 +82,7 @@ public class OOrder {
     /**
      * 店铺Id||968514
      */
-    private int shopId;
+    private long shopId;
 
     /**
      * 店铺名称||"实验餐厅"
@@ -288,11 +288,11 @@ public class OOrder {
         this.phoneList = phoneList;
     }
 
-    public int getShopId() {
+    public long getShopId() {
         return shopId;
     }
 
-    public void setShopId(int shopId) {
+    public void setShopId(long shopId) {
         this.shopId = shopId;
     }
 

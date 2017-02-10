@@ -8,7 +8,7 @@ public class OSimpleShop {
     /**
      * 店铺Id||988887
      */
-    private int id;
+    private long id;
 
     /**
      * 是否开店||1
@@ -20,11 +20,11 @@ public class OSimpleShop {
      */
     private int isValid;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

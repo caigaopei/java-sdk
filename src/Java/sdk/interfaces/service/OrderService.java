@@ -56,7 +56,7 @@ public class OrderService extends NopService {
         return call(params);
     }
 
-    public List<String> getShopOrderIds(Integer size, Integer offset, Integer shopId, String beginDate, String endDate) throws ServiceException {
+    public List<String> getShopOrderIds(Integer size, Integer offset, Long shopId, String beginDate, String endDate) throws ServiceException {
         Map<String, Object> params = new HashMap();
         params.put("size", size);
         params.put("offset", offset);
