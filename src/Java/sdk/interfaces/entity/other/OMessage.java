@@ -8,7 +8,7 @@ public class OMessage {
     private long shopId;
     private long timestamp;
     private String signature;
-    private int userId;
+    private long userId;
 
     public String getRequestId() {
         return requestId;
@@ -66,11 +66,11 @@ public class OMessage {
         this.signature = signature;
     }
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 }

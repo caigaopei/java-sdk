@@ -28,7 +28,7 @@ public class OMessage {
      * 用户Id||3948322145
      */
 
-    private int userId;
+    private long userId;
 
     /**
      * 时间戳||13321234123412345
@@ -69,11 +69,11 @@ public class OMessage {
         this.shopId = shopId;
     }
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
@@ -84,7 +84,6 @@ public class OMessage {
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
-
 
     public String getOrderId() {
         return orderId;

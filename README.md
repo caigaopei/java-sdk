@@ -76,6 +76,12 @@
 
 ## CHANGELOG:
 
+### [v2.1.4]
+
+    Release Date : 2017-02-15
+
+  - [Feature] OUser中userId与OMessage中的userId的类型统一为long
+
 ### [v2.1.3]
 
     Release Date : 2017-02-10
