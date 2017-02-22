@@ -76,6 +76,12 @@
 
 ## CHANGELOG:
 
+### [v2.1.5]
+
+    Release Date : 2017-02-22
+
+  - [Bugfix] 移除OrderService中已废弃的方法getShopOrderIds
+
 ### [v2.1.4]
 
     Release Date : 2017-02-15
