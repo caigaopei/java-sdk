@@ -3,6 +3,7 @@ package sdk.interfaces.service;
 import sdk.annotation.Service;
 import sdk.interfaces.entity.item.OItem;
 import sdk.interfaces.entity.item.OItemIdWithSpecIds;
+import sdk.interfaces.entity.item.OItemIdWithSpecStock;
 import sdk.interfaces.enumeration.item.OItemCreateProperty;
 import sdk.interfaces.exception.ServiceException;
 import sdk.oauth.Token;
@@ -94,5 +95,18 @@ public class ProductItemService extends NopService {
         Map<String, Object> params = new HashMap();
         params.put("itemIds", itemIds);
         return call(params);
+    }
+
+    public void batchUpdateSpecStocks(List<OItemIdWithSpecStock> specStocks) throws ServiceException {
+        Map<String, Object> params = new HashMap();
+        params.put("specStocks", specStocks);
+        call(params);
+    }
+
+    public void setItemPositions(Long categoryId, List<Long> itemIds) throws ServiceException {
+        Map<String, Object> params = new HashMap();
+        params.put("categoryId", categoryId);
+        params.put("itemIds", itemIds);
+        call(params);
     }
 }

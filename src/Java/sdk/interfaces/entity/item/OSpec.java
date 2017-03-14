@@ -40,6 +40,21 @@ public class OSpec {
      */
     private int onShelf;
 
+    /**
+     * 商品扩展码||"1234567890"
+     */
+    private String extendCode;
+
+    /**
+     * 商品条形码||"X148948686356666"
+     */
+    private String barCode;
+
+    /**
+     * 商品重量，单位为克。如果商品的店铺的类型是新零售，那么该属性必选||123
+     */
+    private Integer weight;
+
     public long getSpecId() {
         return specId;
     }
@@ -94,5 +109,29 @@ public class OSpec {
 
     public void setOnShelf(int onShelf) {
         this.onShelf = onShelf;
+    }
+
+    public String getExtendCode() {
+        return extendCode;
+    }
+
+    public void setExtendCode(String extendCode) {
+        this.extendCode = extendCode;
+    }
+
+    public String getBarCode() {
+        return barCode;
+    }
+
+    public void setBarCode(String barCode) {
+        this.barCode = barCode;
+    }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
     }
 }

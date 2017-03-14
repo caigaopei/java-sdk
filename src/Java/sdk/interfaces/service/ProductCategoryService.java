@@ -48,4 +48,11 @@ public class ProductCategoryService extends NopService {
         params.put("categoryId", categoryId);
         call(params);
     }
+
+    public void setCategoryPositions(Long shopId, List<Long> categoryIds) throws ServiceException {
+        Map<String, Object> params = new HashMap();
+        params.put("shopId", shopId);
+        params.put("categoryIds", categoryIds);
+        call(params);
+    }
 }

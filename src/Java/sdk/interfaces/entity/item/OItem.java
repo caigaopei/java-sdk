@@ -55,14 +55,24 @@ public class OItem {
     private String imageUrl;
 
     /**
-     * 标签||"{"isFeatured":0,"isGum":0,"isNew":1,"isSpicy":1}"
+     * 标签||{"isFeatured":0,"isGum":0,"isNew":1,"isSpicy":1}
      */
     private OLabel labels;
 
     /**
-     * 规格的列表||"[{"maxStock":100,"name":"大份","onShelf":1,"packingFee":1.0,"price":19.9,"specId":0,"stock":0},{"maxStock":100,"name":"中分","onShelf":1,"packingFee":1.0,"price":19.9,"specId":0,"stock":0}]"
+     * List<OSpec> 规格的列表||[{"maxStock":100,"name":"大份","onShelf":1,"packingFee":1.0,"price":19.9,"specId":0,"stock":0},{"maxStock":100,"name":"中分","onShelf":1,"packingFee":1.0,"price":19.9,"specId":0,"stock":0}]
      */
     private List<OSpec> specs;
+
+    /**
+     * 售卖时间||{"weeks":["MONDAY","FRIDAY"],"beginDate":"2017-03-14","endDate":"2017-06-22","times":[{"beginTime":"16:57","endTime":"17:57"}]}
+     */
+    private OItemSellingTime sellingTime;
+
+    /**
+     * List<OItemAttribute> 属性||[{"id":0,"name":"甜度","details":[{"id":0,"name":"5分甜","description":"有点甜"},{"id":0,"name":"7分甜","description":"很甜"}]}]
+     */
+    private List<OItemAttribute> attributes;
 
     public String getDescription() {
         return description;
@@ -150,5 +160,21 @@ public class OItem {
 
     public void setSpecs(List<OSpec> specs) {
         this.specs = specs;
+    }
+
+    public OItemSellingTime getSellingTime() {
+        return sellingTime;
+    }
+
+    public void setSellingTime(OItemSellingTime sellingTime) {
+        this.sellingTime = sellingTime;
+    }
+
+    public List<OItemAttribute> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(List<OItemAttribute> attributes) {
+        this.attributes = attributes;
     }
 }
