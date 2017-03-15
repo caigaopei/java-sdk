@@ -76,6 +76,14 @@
 
 ## CHANGELOG:
 
+### [v2.1.6]
+
+    Release Date : 2017-03-16
+
+  - [Feature] 新增设置商品排序接口
+  - [Feature] 新增设置分类排序接口
+  - [Feature] 新增批量更新库存接口
+
 ### [v2.1.5]
 
     Release Date : 2017-02-22
