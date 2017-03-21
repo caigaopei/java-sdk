@@ -1,6 +1,7 @@
 package sdk.interfaces.service;
 
 import sdk.annotation.Service;
+import sdk.interfaces.entity.order.ODeliveryRecord;
 import sdk.interfaces.entity.order.OOrder;
 import sdk.interfaces.enumeration.order.OInvalidateType;
 import sdk.interfaces.exception.ServiceException;
@@ -53,6 +54,18 @@ public class OrderService extends NopService {
         Map<String, Object> params = new HashMap();
         params.put("orderId", orderId);
         params.put("reason", reason);
+        return call(params);
+    }
+
+    public List<ODeliveryRecord> getDeliveryStateRecord(String orderId) throws ServiceException {
+        Map<String, Object> params = new HashMap();
+        params.put("orderId", orderId);
+        return call(params);
+    }
+
+    public Map<String, ODeliveryRecord> batchGetDeliveryStates(List<String> orderIds) throws ServiceException {
+        Map<String, Object> params = new HashMap();
+        params.put("orderIds", orderIds);
         return call(params);
     }
 }

@@ -15,180 +15,188 @@ import java.util.List;
 public class OOrder {
 
     /**
-     * 顾客送餐地址||"近铁城市广场"
+     * String 顾客送餐地址||"近铁城市广场"
      */
     private String address;
 
     /**
-     * 下单时间||"2016-11-30T12:15:53"
+     * String 下单时间||"2016-11-30T12:15:53"
      */
     @JsonDeserialize(using = DateDeserializer.class)
     private Date createdAt;
 
     /**
-     * 订单生效时间||"2016-11-30T12:15:53"
+     * String 订单生效时间||"2016-11-30T12:15:53"
      *
-     * @desc 即支付时间
+     * @desc 即支付时间，只有支付完成后才会推送订单，只有货到付款的订单生效时间等于下单时间
      */
     @JsonDeserialize(using = DateDeserializer.class)
     private Date activeAt;
 
     /**
-     * 配送费||2.0
+     * double 配送费||2.0
      */
     private double deliverFee;
 
     /**
-     * 预计送达时间||"2016-11-30T13:15:53"
+     * String 预计送达时间||"2016-11-30T13:15:53"
+     *
+     * @desc 只有预订单的预计送达时间才有意义
      */
     @JsonDeserialize(using = DateDeserializer.class)
     private Date deliverTime;
 
     /**
-     * 订单备注||"不要香菜"
+     * String 订单备注||"不要香菜"
      */
     private String description;
 
     /**
-     * 订单详细类目的列表||"[{"items":[{"categoryId":1123123,"id":2341123,"name":"奶茶","price":10.0,"quantity":30,"total":300.0}],"name":"一个分组","type":"discount"}]"
+     * List<OGoodsGroup> 订单详细类目的列表||[{"items":[{"categoryId":1123123,"id":2341123,"name":"奶茶","price":10.0,"quantity":30,"total":300.0}],"name":"一个分组","type":"discount"}]
      */
     private List<OGoodsGroup> groups = new ArrayList();
 
     /**
-     * 发票抬头||"拉扎斯网络科技(上海)有限公司"
+     * String 发票抬头||"拉扎斯网络科技(上海)有限公司"
      */
     private String invoice;
 
     /**
-     * 是否预订单||true
+     * boolean 是否预订单||true
      */
     private boolean book;
 
     /**
-     * 是否在线支付||false
+     * boolean 是否在线支付||false
      */
     private boolean onlinePaid;
 
     /**
-     * 订单Id||"100027455049038461"
+     * String 订单Id||"100027455049038461"
      */
     private String id;
 
     /**
-     * 顾客联系电话||["13507701342"]
+     * List<String> 顾客联系电话||["13507701342"]
      */
     private List<String> phoneList = new ArrayList();
 
     /**
-     * 店铺Id||968514
+     * long 店铺Id||968514
      */
     private long shopId;
 
     /**
-     * 店铺名称||"实验餐厅"
+     * String 店铺绑定的外部ID||"8389292348123"
+     */
+    private String openId;
+
+    /**
+     * String 店铺名称||"实验餐厅"
      */
     private String shopName;
 
     /**
-     * 店铺当日订单流水号||89
+     * int 店铺当日订单流水号||89
      */
     private int daySn;
 
     /**
-     * 订单状态||"settled"
+     * OOrderStatus 订单状态||"settled"
      */
     private OOrderStatus status;
 
     /**
-     * 退单状态||"noRefund"
+     * OOrderRefundStatus 退单状态||"noRefund"
      */
     private OOrderRefundStatus refundStatus;
 
     /**
-     * 用户Id||13524069
+     * int 下单用户的Id||13524069
      */
     private int userId;
 
     /**
-     * 订单总价||5.0
-     *
-     * @desc 用户实付(单位：元）
+     * double 订单总价，用户实际支付的金额，单位：元||5.0
      */
     private double totalPrice;
 
     /**
-     * 原始价格||5.0
+     * double 订单原始价格||5.0
      *
-     * @desc 优惠前的价格，即菜价加上配送费和打包费，单位：元
+     * @desc 订单优惠前的价格，即商品总价加上配送费和餐盒费，单位：元
      */
     private double originalPrice;
 
     /**
-     * 订单收货人||"张三"
+     * String 订单收货人姓名||"张三"
      */
     private String consignee;
 
     /**
-     * 订单收货地址经纬度||"121.83317,31.514559"
+     * String 订单收货地址经纬度||"121.83317,31.514559"
      */
     private String deliveryGeo;
 
     /**
-     * 顾客送餐详情地址||"近铁城市广场（普陀区金沙江路1518弄)"
+     * String 送餐地址||"近铁城市广场（普陀区金沙江路1518弄)"
      */
     private String deliveryPoiAddress;
 
     /**
-     * 是否需要发票||true
+     * boolean 顾客是否需要发票||true
      */
     private boolean invoiced;
 
     /**
-     * 店铺实收||7.0
+     * double 店铺实收||7.0
+     *
+     * @desc 店铺实际本单收入，订单总额扣除服务费、商户补贴金额
      */
     private double income;
 
     /**
-     * 饿了么服务费率||0.0
+     * double 饿了么服务费率||0.0
      */
     private double serviceRate;
 
     /**
-     * 饿了么服务费||0.0
+     * double 饿了么服务费||0.0
      */
     private double serviceFee;
 
     /**
-     * 订单中红包金额||1.0
+     * double 订单中红包金额||1.0
      */
     private double hongbao;
 
     /**
-     * 餐盒费||1.0
+     * double 餐盒费||1.0
      */
     private double packageFee;
 
     /**
-     * 订单活动总额||12.0
+     * double 订单活动总额||12.0
      */
     private double activityTotal;
 
     /**
-     * 店铺承担活动费用||6.0
+     * double 店铺承担活动费用||6.0
      */
     private double shopPart;
 
     /**
-     * 饿了么承担活动费用||6.0
+     * double 饿了么承担活动费用||6.0
      */
     private double elemePart;
 
     /**
-     * 降级标识||false
+     * boolean 降级标识||false
      *
      * @desc true为已降级，false为未降级。
      * 平台为尽可能促成交易，会在一部分字段未生成的时候（如活动补贴），将订单生成。
      * 如果需要完整的订单的订单信息，需要事后在降级标记为false时再进行读取。
+     * 当此字段为降级标识true的时候会影响本单收入的金额值计算不准确，请开发者务必注意。
      */
     private boolean downgraded;
 
@@ -294,6 +302,14 @@ public class OOrder {
 
     public void setShopId(long shopId) {
         this.shopId = shopId;
+    }
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
     }
 
     public String getShopName() {
