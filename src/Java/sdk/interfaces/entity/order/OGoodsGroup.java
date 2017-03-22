@@ -15,14 +15,24 @@ public class OGoodsGroup {
     private String name = "";
 
     /**
-     * 分组类型||"normal"
+     * OOrderDetailGroupType 分组类型||"normal"
+     *
+     * @desc
+     *
+     * | 值 | 值含义 |
+     * | --- | --- |
+     * | normal | 普通商品 |
+     * | extra | 配送费等额外信息 |
+     * | discount | 折扣信息，红包，满减等 |
+     *
      */
     private OOrderDetailGroupType type;
 
     /**
-     * 商品信息的列表||"[{"categoryId":1123123,"id":2341123,"name":"奶茶","price":10.0,"quantity":30,"total":300.0}]"
+     * List<OGoodsItem> 商品信息的列表||[{"categoryId":1,"id":2341123,"skuId":1122341123,"name":"奶茶","price":10.0,"quantity":30,"total":300.0}]
      */
     private List<OGoodsItem> items = new ArrayList();
+
     public String getName() {
         return name;
     }

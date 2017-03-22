@@ -52,7 +52,7 @@ public class OOrder {
     private String description;
 
     /**
-     * List<OGoodsGroup> 订单详细类目的列表||[{"items":[{"categoryId":1123123,"id":2341123,"name":"奶茶","price":10.0,"quantity":30,"total":300.0}],"name":"一个分组","type":"discount"}]
+     * List<OGoodsGroup> 订单详细类目的列表||[{"items":[{"categoryId":1,"id":2341123,"skuId":1122341123,"name":"奶茶","price":10.0,"quantity":30,"total":300.0}],"name":"一个分组","type":"normal"}]
      */
     private List<OGoodsGroup> groups = new ArrayList();
 

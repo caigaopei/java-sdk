@@ -6,12 +6,19 @@ package sdk.interfaces.entity.order;
 public class OGoodsItem {
 
     /**
-     * 商品Id||27970000058
+     * 篮子商品Id（根据篮子商品的类型取不同的值）||27970000058
+     *
+     * @desc | 值 | 值含义 |
+     * | --- | --- |
+     * | 商品Id | 等价于OItem中的Id |
+     * | -10 | 配送费 |
+     * | -70000 | 餐盒费 |
+     * | -90000 | 限时抢购 |
      */
     private long id;
 
     /**
-     * 规格Id||2543
+     * 商品规格Id(与规格中的specId相同)||1234567890
      */
     private Long skuId;
 
@@ -21,7 +28,16 @@ public class OGoodsItem {
     private String name = "";
 
     /**
-     * 商品分类Id||26940000135
+     * 订单中商品项的标识(注意，此处不是商品分类Id)||1
+     *
+     * @desc | 值 | 值含义 |
+     * | --- | --- |
+     * | 11 | 美食活动 |
+     * | 12 | 餐厅活动 |
+     * | 13 | 红包 |
+     * | 2 | 配送费 |
+     * | 102 | 餐盒费 |
+     * |  1 | 商品 |
      */
     private long categoryId = 0;
 
