@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -44,9 +43,9 @@ public class SignatureUtil {
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException ignore) {
+            md.update(str.getBytes("UTF-8"));
+        } catch (Exception e) {
         }
-        md.update(str.getBytes());
 
         byte byteData[] = md.digest();
         StringBuffer buffer = new StringBuffer();
