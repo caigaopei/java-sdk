@@ -68,4 +68,16 @@ public class OrderService extends NopService {
         params.put("orderIds", orderIds);
         return call(params);
     }
+
+    public OOrder deliveryBySelf(String orderId) throws ServiceException {
+        Map<String, Object> params = new HashMap();
+        params.put("orderId", orderId);
+        return call(params);
+    }
+
+    public OOrder noMoreDelivery(String orderId) throws ServiceException {
+        Map<String, Object> params = new HashMap();
+        params.put("orderId", orderId);
+        return call(params);
+    }
 }
